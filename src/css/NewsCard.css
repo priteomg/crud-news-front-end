@@ -4,3 +4,8 @@
   border-radius: 6px;
   max-height: 300px;
 }
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+}
