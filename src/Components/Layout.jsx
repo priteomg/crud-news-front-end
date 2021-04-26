@@ -67,6 +67,14 @@ const Layout = () => {
     });
   };
 
+  const onClickEdit = (id) => {
+    console.log(id);
+  };
+
+  const onClickDelete = (id) => {
+    console.log(id);
+  };
+
   return (
     <div className="container">
       <h1>News!!</h1>
@@ -79,10 +87,13 @@ const Layout = () => {
         news.map((item) => (
           <NewsCard
             key={item.id}
+            id={item.id}
             title={item.title}
             content={item.content}
             author={item.author}
             createAt={item.createAt}
+            onClickDelete={onClickDelete}
+            onClickEdit={onClickEdit}
           />
         ))
       ) : (

@@ -3,10 +3,13 @@ import "../css/NewsCard.css";
 import { Button, Grid } from "@material-ui/core";
 
 const NewsCard = ({
+  id = null,
   title = "",
   content = "",
   author = "",
   createdAt = "",
+  onClickEdit = () => {},
+  onClickDelete = () => {},
 }) => {
   return (
     <>
@@ -28,8 +31,8 @@ const NewsCard = ({
             }}
           >
             <div className="buttonGroup">
-              <Button>Edit</Button>
-              <Button>Delete</Button>
+              <Button onClick={() => onClickEdit(id)}>Edit</Button>
+              <Button onClick={() => onClickDelete(id)}>Delete</Button>
             </div>
           </Grid>
         </Grid>
