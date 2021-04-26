@@ -35,7 +35,7 @@ const FormNews = ({
           <div>
             <label>News Tags #</label>
             <input
-              value={data.tags}
+              value={data.author}
               onChange={(e) => onChange("author", e.target.value)}
             />
           </div>

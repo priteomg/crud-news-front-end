@@ -60,6 +60,11 @@ const Layout = () => {
     event.preventDefault();
     insertPost(data);
     setReload(!reload);
+    setData({
+      title: "",
+      content: "",
+      author: "",
+    });
   };
 
   return (
