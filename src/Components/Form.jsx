@@ -7,6 +7,7 @@ const FormNews = ({
   onSubmit = () => {},
   onSubmitUpdate = () => {},
   mode = "create",
+  onReset = () => {},
 }) => {
   const onChange = (field, value) => {
     handleDataChange(field, value);
@@ -29,7 +30,7 @@ const FormNews = ({
           </div>
 
           <div>
-            <label htmlFor="content">News Title</label>
+            <label htmlFor="content">News Content</label>
             <textarea
               id="content"
               value={data.content}
@@ -44,8 +45,11 @@ const FormNews = ({
               onChange={(e) => onChange("author", e.target.value)}
             />
           </div>
-          <button type="primary" disabled={btnDisabled}>
+          <button type="submit" disabled={btnDisabled}>
             {mode === "create" ? "Submit" : "Update"}
+          </button>
+          <button type="button" onClick={onReset} style={{ marginLeft: "8px" }}>
+            Reset
           </button>
         </form>
       </div>

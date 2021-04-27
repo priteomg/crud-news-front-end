@@ -138,6 +138,14 @@ const Layout = () => {
     updatePost(data.id, data);
   };
 
+  const onReset = () => {
+    setData({
+      title: "",
+      content: "",
+      author: "",
+    });
+  };
+
   return (
     <div className="container">
       <h1>News!!</h1>
@@ -147,6 +155,7 @@ const Layout = () => {
         onSubmit={onSubmit}
         mode={mode}
         onSubmitUpdate={onSubmitUpdate}
+        onReset={onReset}
       />
       {news.length > 0 ? (
         news.map((item) => (
