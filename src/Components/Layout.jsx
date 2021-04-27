@@ -15,7 +15,7 @@ const getNews = async () => {
   const result = await axios.get(url, config);
   console.log("result: ", result.data);
   const { data } = result;
-  // setNews(data);
+
   return data;
 };
 
@@ -31,7 +31,7 @@ const insertPost = async (param) => {
   const result = await axios.post(url, param, config);
   console.log("result: ", result.data);
   const { data } = result;
-  // setNews(data);
+
   return data;
 };
 
@@ -46,7 +46,7 @@ const getPostById = async (id) => {
   const result = await axios.get(url, config);
   console.log("result: ", result.data);
   const { data } = result;
-  // setNews(data);
+
   return data;
 };
 
@@ -61,7 +61,22 @@ const updatePost = async (id, param) => {
   const result = await axios.put(url, param, config);
   console.log("result: ", result.data);
   const { data } = result;
-  // setNews(data);
+
+  return data;
+};
+
+const deletePost = async (id) => {
+  const url = `http://localhost:1337/api/v1/posts/${id}`;
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+      "Access-Control-Allow-Origin": true,
+    },
+  };
+  const result = await axios.delete(url, config);
+  console.log("result: ", result.data);
+  const { data } = result;
+
   return data;
 };
 
@@ -109,6 +124,8 @@ const Layout = () => {
 
   const onClickDelete = (id) => {
     console.log(id);
+    deletePost(id);
+    setReload(!reload);
   };
 
   const onSubmitUpdate = () => {
