@@ -14,4 +14,6 @@ form > div {
 input,
 textarea {
   width: 500px;
+  font-size: 20px;
+  resize: none;
 }

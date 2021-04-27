@@ -12,6 +12,9 @@ const FormNews = ({
     handleDataChange(field, value);
   };
 
+  const btnDisabled =
+    data.title === "" || data.content === "" || data.author === "";
+
   return (
     <>
       <div className="form">
@@ -35,13 +38,13 @@ const FormNews = ({
             />
           </div>
           <div>
-            <label>News Tags #</label>
+            <label>Author</label>
             <input
               value={data.author}
               onChange={(e) => onChange("author", e.target.value)}
             />
           </div>
-          <button type="primary">
+          <button type="primary" disabled={btnDisabled}>
             {mode === "create" ? "Submit" : "Update"}
           </button>
         </form>

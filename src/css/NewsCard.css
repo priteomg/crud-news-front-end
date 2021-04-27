@@ -3,9 +3,20 @@
   border: 1px solid grey;
   border-radius: 6px;
   max-height: 300px;
+  margin-top: 16px;
 }
 
 .buttonGroup {
   display: flex;
   flex-direction: column;
+}
+
+.title {
+  font-size: 26px;
+}
+
+.content,
+.createAt,
+.author {
+  margin-top: 8px;
 }

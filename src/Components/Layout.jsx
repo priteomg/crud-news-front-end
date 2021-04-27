@@ -126,6 +126,12 @@ const Layout = () => {
     console.log(id);
     deletePost(id);
     setReload(!reload);
+    setData({
+      title: "",
+      content: "",
+      author: "",
+    });
+    setMode("create");
   };
 
   const onSubmitUpdate = () => {
@@ -156,7 +162,7 @@ const Layout = () => {
           />
         ))
       ) : (
-        <div> no data</div>
+        <div style={{ marginTop: "32px" }}> no data</div>
       )}
     </div>
   );

@@ -1,6 +1,10 @@
 import React from "react";
 import "../css/NewsCard.css";
 import { Button, Grid } from "@material-ui/core";
+import dayjs from "dayjs";
+
+var buddhistEra = require("dayjs/plugin/buddhistEra");
+dayjs.extend(buddhistEra);
 
 const NewsCard = ({
   id = null,
@@ -18,8 +22,10 @@ const NewsCard = ({
           <Grid xs={10} item>
             <div className="title">{title}</div>
             <div className="content">{content}</div>
-            <div className="createAt">{createdAt}</div>
-            <div className="author">{author}</div>
+            <div className="createAt">
+              {dayjs(createdAt).format("D MMM BBBB")}
+            </div>
+            <div className="author">เขียนโดย : {author}</div>
           </Grid>
           <Grid
             xs={2}
