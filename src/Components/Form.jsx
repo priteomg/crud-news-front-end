@@ -5,6 +5,8 @@ const FormNews = ({
   data = {},
   handleDataChange = () => {},
   onSubmit = () => {},
+  onSubmitUpdate = () => {},
+  mode = "create",
 }) => {
   const onChange = (field, value) => {
     handleDataChange(field, value);
@@ -13,7 +15,7 @@ const FormNews = ({
   return (
     <>
       <div className="form">
-        <form onSubmit={onSubmit}>
+        <form onSubmit={mode === "create" ? onSubmit : onSubmitUpdate}>
           <div>
             <label htmlFor="title">News Title</label>
             <input
@@ -39,7 +41,9 @@ const FormNews = ({
               onChange={(e) => onChange("author", e.target.value)}
             />
           </div>
-          <button type="primary">Submit</button>
+          <button type="primary">
+            {mode === "create" ? "Submit" : "Update"}
+          </button>
         </form>
       </div>
     </>

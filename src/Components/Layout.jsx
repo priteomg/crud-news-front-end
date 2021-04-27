@@ -35,6 +35,36 @@ const insertPost = async (param) => {
   return data;
 };
 
+const getPostById = async (id) => {
+  const url = `http://localhost:1337/api/v1/posts/${id}`;
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+      "Access-Control-Allow-Origin": true,
+    },
+  };
+  const result = await axios.get(url, config);
+  console.log("result: ", result.data);
+  const { data } = result;
+  // setNews(data);
+  return data;
+};
+
+const updatePost = async (id, param) => {
+  const url = `http://localhost:1337/api/v1/posts/${id}`;
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+      "Access-Control-Allow-Origin": true,
+    },
+  };
+  const result = await axios.put(url, param, config);
+  console.log("result: ", result.data);
+  const { data } = result;
+  // setNews(data);
+  return data;
+};
+
 const Layout = () => {
   const [news, setNews] = useState([]);
   const [reload, setReload] = useState(false);
@@ -43,6 +73,7 @@ const Layout = () => {
     content: "",
     author: "",
   });
+  const [mode, setMode] = useState("create");
 
   useEffect(() => {
     getNews().then((result) => {
@@ -69,10 +100,19 @@ const Layout = () => {
 
   const onClickEdit = (id) => {
     console.log(id);
+
+    getPostById(id).then((result) => {
+      setData(result);
+    });
+    setMode("update");
   };
 
   const onClickDelete = (id) => {
     console.log(id);
+  };
+
+  const onSubmitUpdate = () => {
+    updatePost(data.id, data);
   };
 
   return (
@@ -82,6 +122,8 @@ const Layout = () => {
         data={data}
         handleDataChange={handleDataChange}
         onSubmit={onSubmit}
+        mode={mode}
+        onSubmitUpdate={onSubmitUpdate}
       />
       {news.length > 0 ? (
         news.map((item) => (
@@ -91,7 +133,7 @@ const Layout = () => {
             title={item.title}
             content={item.content}
             author={item.author}
-            createAt={item.createAt}
+            createdAt={item.createdAt}
             onClickDelete={onClickDelete}
             onClickEdit={onClickEdit}
           />
